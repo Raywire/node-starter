@@ -48,7 +48,7 @@ npm run dev:start
 | ------------- | ------------- | ------------- |
 | GET |  Get all posts | `/api/post` |
 | POST | Create a post | `/api/post` |
-| GET |  Get a specific post | `/api/post/:params` |
+| GET |  Get a specific post | `/api/post/:id` |
 | PUT |  Update a specific post | `/api/post/:id` |
 | DELETE | Delete a specific post |`/api/post/:id` |
 

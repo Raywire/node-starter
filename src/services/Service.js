@@ -3,10 +3,28 @@ import mongoose from "mongoose";
 class Service {
   constructor(model) {
     this.model = model;
+    this.get = this.get.bind(this);
     this.getAll = this.getAll.bind(this);
     this.insert = this.insert.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
+  }
+
+  async get(id) {
+    try {
+      let item = await this.model.findById(id);
+      return {
+        error: false,
+        statusCode: 200,
+        item
+      };
+    } catch (error) {
+      return {
+        error: true,
+        statusCode: 500,
+        error
+      };
+    }
   }
 
   async getAll(query) {
@@ -31,7 +49,7 @@ class Service {
         .find(query)
         .skip(skip)
         .limit(limit);
-      let total = await this.model.count();
+      let total = await this.model.countDocuments();
 
       return {
         error: false,
