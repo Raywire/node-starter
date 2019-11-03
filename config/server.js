@@ -1,7 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-const app = express();
+import setRoutes from "./routes";
 
-app.use(bodyParser.json());
+const server = express();
 
-export default app;
+server.use(bodyParser.json());
+setRoutes(server);
+
+export default server;
